@@ -2,11 +2,7 @@ import db from '../config/db.js';
 import bcrypt from 'bcryptjs';
 
 let strongPassword = (password) => {
-    if (!password || password.length < 8) return false;
-    if (!/[A-Z]/.test(password)) return false;
-    if (!/[a-z]/.test(password)) return false;
-    if (!/[0-9]/.test(password)) return false;
-    if (!/[^A-Za-z0-9]/.test(password)) return false;
+    if (!password || password.length < 4) return false;
     return true;
 };
 
@@ -27,7 +23,7 @@ let register = async (req, res) => {
 
     if (!strongPassword(password)) {
         return res.status(400).json({
-            message: "Password must be at least 8 characters and include uppercase, lowercase, a number, and a symbol"
+            message: "Password must be at least 4 characters"
         });
     }
 

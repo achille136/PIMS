@@ -58,6 +58,13 @@ export default function Reports() {
         >
           {loading ? 'Loading…' : 'Run report'}
         </button>
+        <button
+          type="button"
+          onClick={() => window.open(`${apiClient.defaults.baseURL}/reports/daily/download?date=${date}`, '_blank')}
+          className="rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-500"
+        >
+          Download CSV
+        </button>
       </div>
 
       <section className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">

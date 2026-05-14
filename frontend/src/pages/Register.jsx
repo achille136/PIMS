@@ -4,11 +4,7 @@ import apiClient from '../api/client.js'
 import { useAuth } from '../context/AuthContext.jsx'
 
 function strongPassword(p) {
-  if (!p || p.length < 8) return false
-  if (!/[A-Z]/.test(p)) return false
-  if (!/[a-z]/.test(p)) return false
-  if (!/[0-9]/.test(p)) return false
-  if (!/[^A-Za-z0-9]/.test(p)) return false
+  if (!p || p.length < 4) return false
   return true
 }
 
@@ -31,7 +27,7 @@ export default function Register() {
     setOk('')
     if (!strongPassword(password)) {
       setError(
-        'Password must be at least 8 characters and include uppercase, lowercase, a number, and a symbol.'
+        'Password must be at least 4 characters.'
       )
       return
     }
@@ -88,7 +84,7 @@ export default function Register() {
               required
             />
             <p className="mt-1 text-xs text-slate-500">
-              Use 8+ characters with upper, lower, number, and symbol.
+              Use at least 4 characters.
             </p>
           </div>
           <button
